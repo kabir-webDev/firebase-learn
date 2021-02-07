@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
-import Data from "./components/Data";
-import Papa from "./components/Papa";
+import TestComp from "./components/TestComp";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <TestComp />
+    </div>
+  );
 }
 
 export default App;
