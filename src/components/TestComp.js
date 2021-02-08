@@ -1,4 +1,3 @@
-import { MarkunreadOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -6,15 +5,18 @@ function TestComp() {
   const { register, handleSubmit, error } = useForm();
   const [todos, setTodos] = useState([
     {
-      id: 328,
-      name: "Kabir Hasan",
-      expert: "Web Developement",
+      id: 1,
+      task: "Shikhte hobe",
       isCompleted: false,
     },
     {
-      id: 300,
-      name: "Eren Yeager",
-      expert: "Attack Titan",
+      id: 2,
+      task: "Taka Kamaite hobe",
+      isCompleted: false,
+    },
+    {
+      id: 3,
+      task: "Biye korte hobe",
       isCompleted: false,
     },
   ]);
@@ -33,11 +35,7 @@ function TestComp() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "25px" }}>
-        <input name="id" type="number" ref={register} />
-        <br />
-        <input name="name" ref={register} />
-        <br />
-        <input name="expert" ref={register} />
+        <input name="task" placeholder="enter todo" ref={register} />
         <br />
         <input type="submit" value="Hit It" />
       </form>
@@ -47,7 +45,7 @@ function TestComp() {
           style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
         >
           <input type="checkbox" onChange={() => markDone(index)} />
-          {todo.name}
+          {todo.task}
         </p>
       ))}
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import TestComp from "./components/TestComp";
+import Fetching from "./components/Fetching";
 
 function App() {
   return (
     <div className="App">
-      <TestComp />
+      Walah <Fetching />
     </div>
   );
 }
