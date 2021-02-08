@@ -1,65 +1,56 @@
-import { formatMs } from "@material-ui/core";
+import { MarkunreadOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function TestComp() {
+  const { register, handleSubmit, error } = useForm();
   const [todos, setTodos] = useState([
     {
-      id: 555,
+      id: 328,
+      name: "Kabir Hasan",
+      expert: "Web Developement",
+      isCompleted: false,
+    },
+    {
+      id: 300,
       name: "Eren Yeager",
       expert: "Attack Titan",
       isCompleted: false,
     },
-    {
-      id: 333,
-      name: "Levi Acreman",
-      expert: "Captain",
-      isCompleted: false,
-    },
-    {
-      id: 111,
-      name: "Erwin",
-      expert: "Commender",
-      isCompleted: false,
-    },
   ]);
-  const { register, handleSubmit, error } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
     setTodos([...todos, data]);
+    console.log(todos);
   };
 
-  const markComplete = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = !newTodos[index].isCompleted;
-    setTodos(newTodos);
+  const markDone = (index) => {
+    const newTodo = [...todos];
+    newTodo[index].isCompleted = !newTodo[index].isCompleted;
+    setTodos(newTodo);
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "25px" }}>
         <input name="id" type="number" ref={register} />
         <br />
         <input name="name" ref={register} />
         <br />
-
         <input name="expert" ref={register} />
         <br />
-
-        <input type="submit" />
+        <input type="submit" value="Hit It" />
       </form>
       {todos.map((todo, index) => (
-        <p style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}>
-          <input
-            type={"checkbox"}
-            onChange={() => markComplete(index)}
-            name={"completed"}
-            id={todo.id}
-          />{" "}
+        <p
+          key={index}
+          style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+        >
+          <input type="checkbox" onChange={() => markDone(index)} />
           {todo.name}
         </p>
       ))}
-    </>
+    </div>
   );
 }
 
