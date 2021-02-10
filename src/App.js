@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import Fetching from "./components/Fetching";
+import Media from "./components/Responsive/Media";
 
 function App() {
   return (
     <div className="App">
-      Walah <Fetching />
+      Walah <br />
+      <Media />
     </div>
   );
 }
