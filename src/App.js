@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import Media from "./components/Responsive/Media";
+import PapaDataBase from "./components/FireThings/PapaDataBase";
 
 function App() {
   return (
     <div className="App">
-      Walah <br />
-      In the langs
-      <Media />
+      <PapaDataBase />
     </div>
   );
 }
