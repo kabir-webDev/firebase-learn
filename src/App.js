@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       Walah <br />
+      In the langs
       <Media />
     </div>
   );
