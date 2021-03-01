@@ -12,6 +12,7 @@ export default function ImageUpload() {
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   console.log(name);
+
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -58,28 +59,29 @@ export default function ImageUpload() {
       }
     );
   };
-  const HitIt = () => {
-    db.collection("posts").add({
-      name: "Kadir pur",
-      state: "Kushtia",
-      country: "Bangladesh",
-    });
-  };
+  // const HitIt = () => {
+  //   db.collection("posts").add({
+  //     name: "Kadir pur",
+  //     state: "Kushtia",
+  //     country: "Bangladesh",
+  //   });
+  // };
   return (
     <div className="container">
       <div className="inputs">
-        <progress value={progress} max="100" /> <br />
+        <progress value={progress} max="100" />
         <input
           type="text"
           placeholder="enter a caption"
           onChange={(event) => setCaption(event.target.value)}
           value={caption}
         />{" "}
-        <br />
-        <input type="file" onChange={handleChange} /> <br />
+        <input type="file" onChange={handleChange} />
         <input type="text" onChange={(e) => setName(e.target.value)} />
         <input type="date" onChange={(e) => setBirth(e.target.value)} />
-        <Button onClick={handleUpload}>Upload</Button> <br />
+        <Button variant="contained" onClick={handleUpload}>
+          Upload
+        </Button>
       </div>
     </div>
   );

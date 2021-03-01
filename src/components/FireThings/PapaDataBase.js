@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import DataBaseWork from "./DataBaseWork";
 import ImageUpload from "./ImageUpload";
+import "./Boom.css";
 
 function PapaDataBase() {
   const [posts, setPosts] = useState([]);
@@ -16,17 +17,19 @@ function PapaDataBase() {
   // console.log(posts);
 
   return (
-    <div>
-      <ImageUpload />
+    <div className="cont__items">
+      {/* <ImageUpload /> */}
       {posts.map(({ name, birth, desc, imageURL, avatar }, index) => (
         <h2 key={index}>
-          <DataBaseWork
-            name={name}
-            birth={birth}
-            imageURL={imageURL}
-            desc={desc}
-            avatar={avatar}
-          />
+          <div className="container">
+            <DataBaseWork
+              name={name}
+              birth={birth}
+              imageURL={imageURL}
+              desc={desc}
+              avatar={avatar}
+            />
+          </div>
         </h2>
       ))}
     </div>
