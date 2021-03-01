@@ -15,11 +15,14 @@ function PapaDataBase() {
       });
   }, []);
   // console.log(posts);
+  const handleDelete = (id) => {
+    db.collection("posts").doc("InMq2YQymj7G5QOVT1kj").delete();
+  };
 
   return (
     <div className="cont__items">
       {/* <ImageUpload /> */}
-      {posts.map(({ name, birth, desc, imageURL, avatar }, index) => (
+      {posts.map(({ name, birth, desc, imageURL, avatar, id }, index) => (
         <h2 key={index}>
           <div className="container">
             <DataBaseWork
@@ -28,6 +31,8 @@ function PapaDataBase() {
               imageURL={imageURL}
               desc={desc}
               avatar={avatar}
+              id={id}
+              handleDelete={handleDelete}
             />
           </div>
         </h2>

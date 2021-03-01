@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DataBaseWork({ name, birth, desc, imageURL, avatar }) {
+export default function DataBaseWork({
+  name,
+  birth,
+  desc,
+  imageURL,
+  avatar,
+  id,
+  handleDelete,
+}) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -50,6 +59,13 @@ export default function DataBaseWork({ name, birth, desc, imageURL, avatar }) {
           <span>{desc}</span>
         </Typography>
       </CardContent>
+      <Button
+        onClick={() => handleDelete(id)}
+        variant="contained"
+        color="primary"
+      >
+        Delete
+      </Button>
     </Card>
   );
 }
