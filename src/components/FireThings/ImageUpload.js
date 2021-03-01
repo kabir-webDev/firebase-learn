@@ -2,13 +2,16 @@ import { Button } from "@material-ui/core";
 import React, { useState } from "react";
 import { db, storage } from "../../firebase";
 import firebase from "firebase";
+import "./Boom.css";
 
 export default function ImageUpload() {
   const [caption, setCaption] = useState("");
   //   const [url, setUrl] = useState("");
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
-  const myname = "Mr. Walah";
+  const [name, setName] = useState("");
+  const [birth, setBirth] = useState("");
+  console.log(name);
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -41,13 +44,16 @@ export default function ImageUpload() {
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               desc: caption,
               imageURL: url,
-              name: myname,
+              name: name,
               avatar: url,
+              birth: birth,
             });
             console.log(url);
             setProgress(0);
             setCaption("");
             setImage(null);
+            setBirth("");
+            setName("");
           });
       }
     );
@@ -60,19 +66,21 @@ export default function ImageUpload() {
     });
   };
   return (
-    <div>
-      <progress value={progress} max="100" />
-      <input
-        type="text"
-        placeholder="enter a caption"
-        onChange={(event) => setCaption(event.target.value)}
-        value={caption}
-      />
-      <input type="file" onChange={handleChange} />
-      <Button onClick={handleUpload}>Upload</Button>
-      <Button color="primary" variant="contained" onClick={HitIt}>
-        Hit it
-      </Button>
+    <div className="container">
+      <div className="inputs">
+        <progress value={progress} max="100" /> <br />
+        <input
+          type="text"
+          placeholder="enter a caption"
+          onChange={(event) => setCaption(event.target.value)}
+          value={caption}
+        />{" "}
+        <br />
+        <input type="file" onChange={handleChange} /> <br />
+        <input type="text" onChange={(e) => setName(e.target.value)} />
+        <input type="date" onChange={(e) => setBirth(e.target.value)} />
+        <Button onClick={handleUpload}>Upload</Button> <br />
+      </div>
     </div>
   );
 }
